@@ -120,4 +120,20 @@ Q: The Q-error of queries 0 to 9999
 
 SortQ: The Q-error of all queries sorted in ascending order
 
-Also to run the dataframe-based 10k sampling program samplingtest.py, the parameters are: forest power higgs advantage taxi census 1 2 4 5 6 7 8 12 dmv 0 1 2 3 4 5 7 8 9 10 i.e. the name of the dataset followed by all categorical columns.
+Also to run the dataframe-based 10k sampling program samplingtest.py, the parameters are: 
+
+forest 
+
+power 
+
+higgs 
+
+advantage 
+
+taxi 
+
+census 1 2 4 5 6 7 8 12 
+
+dmv 0 1 2 3 4 5 7 8 9 10 
+
+i.e. the name of the dataset followed by all categorical columns.
