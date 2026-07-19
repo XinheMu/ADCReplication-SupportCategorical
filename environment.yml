@@ -1,0 +1,21 @@
+name: my_conda_env
+channels:
+  - https://repo.anaconda.com/pkgs/main
+  - https://repo.anaconda.com/pkgs/r
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchaudio
+  - torchvision
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - ipython
+  - jupyter
+  - tqdm
+  - openpyxl
+  - nflows
+  - pytorch-cuda=12.4
+  - cuml
