@@ -1,8 +1,12 @@
 The instructions on how to train and test the ADC models are provided below.
 
-This version of the codes already allows for testing, and we will upload the datasets used for training in two days via an annonymous dropbox, due to their size being too large for github. 
+To train a model on the dataset dataset_name, eg. "forest", please go to the anonymous Harvard Dataverse Repository 
 
-More easily runable code with more detailed explanation will follow in three to five days.
+https://dataverse.harvard.edu/previewurl.xhtml?token=9f86c322-8644-40e0-8256-024eb5ed9709
+
+Download the files ${dataset_name}_real_train.npy; ${dataset_name}_trainset.csv; original${dataset_name}.csv (for continuous-only datasets) and original${dataset_name}_withcat.csv (for categorical datasets census and dmv), and then put then into the directory ${dataset_name}training (eg. "foresttraining") under the ADCReplication-SupportCategorical home directory.
+
+More easily generalizable code (that is, feel free to use for other test datasets of your liking) with more detailed explanation for parameter settings will follow in three days, i.e. before July 23th, AOE.
 
 To train the cardinality estimator on datasets without categorical attributes, run the following programs in order:
 
