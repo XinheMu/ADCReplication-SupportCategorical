@@ -4,7 +4,7 @@ To train a model on the dataset dataset_name, eg. "forest", please go to the ano
 
 https://dataverse.harvard.edu/previewurl.xhtml?token=9f86c322-8644-40e0-8256-024eb5ed9709
 
-Download the files ${dataset_name}_real_train.npy; ${dataset_name}_trainset.csv; original${dataset_name}.csv (for continuous-only datasets) and original${dataset_name}_withcat.csv (for categorical datasets census and dmv), and then put then into the directory ${dataset_name}training (eg. "foresttraining") under the ADCReplication-SupportCategorical home directory.
+Download the files ${dataset_name}_real_train.npy; ${dataset_name}_trainset.csv; original${dataset_name}.csv (for continuous-only datasets) and original${dataset_name}_withcat.csv (for categorical datasets census and dmv), and then create a directory named ${dataset_name}training (eg. "foresttraining") under the ADCReplication-SupportCategorical home directory, and put the required files inside.
 
 More easily generalizable code (that is, feel free to use for other test datasets of your liking) with more detailed explanation for parameter settings will follow in three days, i.e. before July 23th, AOE.
 
