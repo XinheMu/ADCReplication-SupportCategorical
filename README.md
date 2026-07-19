@@ -8,6 +8,8 @@ Download the files ${dataset_name}_real_train.npy; ${dataset_name}_trainset.csv;
 
 More easily generalizable code (that is, feel free to use for other test datasets of your liking) with more detailed explanation for parameter settings will follow in three days, i.e. before July 23th, AOE.
 
+The packages needed to run this code are provided in the environment.yml file.
+
 To train the cardinality estimator on datasets without categorical attributes, run the following programs in order:
 
 Train_ADC_All_Histograms_experimental_ver3.py 
