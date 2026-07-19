@@ -1,5 +1,7 @@
 The instructions on how to train and test the ADC models are provided below. This version of the codes already allows for testing, and  we will upload the datasets used for training in two days via an annonymous dropbox, due to their size being too large for github. More easily runable code with more detailed explanation will follow in three to five days.  
 
+An environment.yml file for installing the necessary packages has been provided in the update at July 18th, 20:00 AOE
+
 To train the cardinality estimator on datasets without categorical attributes, run the following programs in order:
 
 Train_ADC_All_Histograms_experimental_ver3.py
