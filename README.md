@@ -1,4 +1,18 @@
+Welcome to the replication repository of "ADC: An Accelerated Diffusion Model for Cardinality Estimation"
+
+Our train, test, and valid sets, as well as the results for all compare group models, are generated and derived using the open source provided by 
+
+Xiaoying Wang, Changbo Qu, Weiyuan Wu, Jiannan Wang, and Qingqing Zhou. 2021. Are we ready for learned cardinality estimation? Proceedings of the VLDB Endowment (2021)
+
+At website
+
+https://github.com/sfu-db/AreCELearnedYet
+
+Please consult the original paper and the above link for how to set up their model and run their experiments. 
+
 The instructions on how to train and test the ADC models are provided below.
+
+The packages needed to run the ADC code are provided in the environment.yml file.
 
 To train a model on the dataset dataset_name, eg. "forest", please go to the anonymous Harvard Dataverse Repository 
 
@@ -6,11 +20,7 @@ https://dataverse.harvard.edu/previewurl.xhtml?token=9f86c322-8644-40e0-8256-024
 
 Download the files ${dataset_name}_real_train.npy; ${dataset_name}_trainset.csv; original${dataset_name}.csv (for continuous-only datasets) and original${dataset_name}_withcat.csv (for categorical datasets census and dmv), and then create a directory named ${dataset_name}training (eg. "foresttraining") under the ADCReplication-SupportCategorical home directory, and put the required files inside.
 
-More easily generalizable code (that is, feel free to use for other test datasets of your liking) with more detailed explanation for parameter settings will follow in three days, i.e. before July 23th, AOE.
-
-The packages needed to run this code are provided in the environment.yml file.
-
-To train the cardinality estimator on datasets without categorical attributes, run the following programs in order:
+Then, for datasets without categorical attributes, run the following programs in order:
 
 Train_ADC_All_Histograms_experimental_ver3.py 
 
@@ -20,7 +30,7 @@ Train_ADC_Network_GPU_ver3.py
 
 Train_ADC_Classifier_ver6.py
 
-To train the cardinality estimator on datasets with categorical attributes, run convert_categorical.py then run the aforementioned programs in order
+For datasets with categorical attributes, run convert_categorical.py, then run the aforementioned programs in order.
 
 To test the cardinality estimator on any dataset, run ADC_Cardest_experimental_ver7.py
 
@@ -112,6 +122,32 @@ census ADC- qerror "[1,1,1,1,1,1,1,1,1,1,1,1,1]" 13 1/80 10000 -100000000 "[]" T
 
 dmv ADC- qerror "[1,1,1,1,1,1,1,1,1,1,1]" 11 1/80 10000 -100000000 "[6]" True
 
+The meaning for each parameter (please open my python files to see which name matches to each corresponding parameter, other training files follow roughly the same naming convention) of ADC_Cardest_experimental_ver7.py is:
+
+dataset_name: The dataset on which to run our experiment. Currently chosen among the values 'forest', 'power', 'higgs', 'advantage'. Note that the dataset 'modulo' is codenamed 'advantage' in our numerical experiments.
+
+ADCversion: Choose among the values 'ADC-','ADC','ADC+'
+
+output_type: Set to 'qerror' for the program to output and display the Q-error; set to 'sel' for the program to calculate the selectivity without calculating th Q-error. The answer sheet found at location dataset_name+'/'+dataset_name+'_real_test.npy', eg. 'power/power_real_test.npy', is needed for output type 'qerror' but not for output type 'sel'.
+
+unit_of_variables: a list enclosed by "" indicating the numerical precision of each attribute, used for preprocessing the query. Eg. unit_of_variables equal 1 for integral attributes, 1e-1 for attributes rounded to 1 digit decimals, 1e-2 for those rounded to 2 digit decimals, etc.
+
+dimension: dimensionality of the dataset
+
+Time_min: early stopping time of the diffusion model
+
+workload_size: Total number of queries to test
+
+nan_to: Which number did missing values get converted to, used for the dataset 'power' which contain missing values, and whose missing values we converted to -1 in accrodance with the paper "Are We Ready for Learned Cardinality Estimtion"
+
+date_like: A parameter listing all attributes corresponding to dates but are stored in integer format, defaults to "[]".
+
+has_categorical: whether the tested dataset contains categorical attributes, defaults to False
+
+threshold (optional): If output_type is set to 'qerror', all queries with an error bigger than threshold will be outputted and their index will be stored to location dataset_name+'/'+dataset_name+'_high_error_list.npy', eg. 'power/power_high_error_list.npy'
+
+draws (optional): Number of draws for predictor-corrector Monte Carlo scheme, default number 25 balances speed with precision according to my tests, but feel free to adjust if you like.
+
 The overall results for each testing run will be directly printed after each test run The detailed results for each testing run will be saved to the latest sheet in the file "Statistics_"+dataset_name+".xlsx" (eg. Statistics_census.xlsx).
 
 Meaning of the five columns are: 
@@ -125,6 +161,12 @@ estsel: The estimated selectivity of query number 0 to 9999
 Q: The Q-error of queries 0 to 9999 
 
 SortQ: The Q-error of all queries sorted in ascending order
+
+To run the ablation studies with Bayesnet disabled, change the 4th parameter for "Train_ADC_All_Histograms_experimental_ver2.py" to "False", then run the aforementioned programs in exactly the same sequence, using exactly the same parameter settings. Doing so will not produce different results on the datasets forest, higgs, and advantage, due to no functional dependency being detected in the first place.
+
+To conver queries and labels in the format of "Are We Ready for Learned Cardinality Estimation" into our preferred format (training and testing queries in ADC's preferred format are also provided in the dataverse repository), please run convert_queries.py and convert_labels.py, with parameter setting
+
+${dataset_name}(choose between "forest, power, higgs, advantage, taxi, census, dmv") ${query_type} (choose between "train, test, valid")
 
 Also to run the dataframe-based 10k sampling program samplingtest.py, the parameters are: 
 
