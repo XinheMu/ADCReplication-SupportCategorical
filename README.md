@@ -10,7 +10,7 @@ https://github.com/sfu-db/AreCELearnedYet
 
 Please consult the original paper and the above link for how to set up their model and run their experiments. 
 
-The instructions on how to train and test the ADC models are provided below. Note that I have uploaded pre-trained cardinality estimation models, which allow testing to be conducted without the need to run another training process
+The instructions on how to train and test the ADC models are provided below. Note that I have uploaded pre-trained cardinality estimation models, which allow testing to be conducted without running the training process beforehand
 
 The packages needed to run the ADC code are provided in the environment.yml file.
 
