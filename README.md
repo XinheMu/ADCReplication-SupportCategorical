@@ -34,7 +34,7 @@ For datasets with categorical attributes, run convert_categorical.py, then run t
 
 To test the cardinality estimator on any dataset, run ADC_Cardest_experimental_ver8.py
 
-The parameter settings for the tested datasets are the follows (note that the dataset "Modulo" is codenamed "advantage" in our programs). To run the ablation studies with Bayesnet disabled, change the 5th parameter for "Train_ADC_All_Histograms_experimental_ver3.py" to "False", then run the aforementioned programs in exactly the same sequence, using exactly the same parameter settings. Doing so will not produce different results on the datasets forest, higgs, and advantage, due to no functional dependency being detected in the first place.
+The parameter settings for the tested datasets are the follows (note that the dataset "Modulo" is codenamed "advantage" in our programs). To run ablation studies with Bayesnet disabled, change 5th parameter of "Train_ADC_All_Histograms_experimental_ver3.py" to "False", then run the aforementioned programs in exactly the same sequence, using exactly the same parameter settings. Doing so will not produce different results on the datasets forest, higgs, and advantage, due to no functional dependency being detected in the first place.
 
 For convert_categorical.py (eg. run " conda run -n my_conda_env python convert_categorical.py census 20 "[0,1,1,0,1,1,1,1,1,0,0,0,1]" "):
 
