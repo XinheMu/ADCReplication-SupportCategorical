@@ -10,7 +10,7 @@ https://github.com/sfu-db/AreCELearnedYet
 
 Please consult the original paper and the above link for how to set up their model and run their experiments. 
 
-The instructions on how to train and test the ADC models are provided below.
+The instructions on how to train and test the ADC models are provided below. Note that I have uploaded pre-trained cardinality estimation models, which allow testing to be conducted without the need to run another training process
 
 The packages needed to run the ADC code are provided in the environment.yml file.
 
@@ -32,7 +32,7 @@ Train_ADC_Classifier_ver6.py
 
 For datasets with categorical attributes, run convert_categorical.py, then run the aforementioned programs in order.
 
-To test the cardinality estimator on any dataset, run ADC_Cardest_experimental_ver8.py
+To test the cardinality estimator on any dataset, run ADC_Cardest_experimental_ver8.py.
 
 The parameter settings for the tested datasets are the follows (note that the dataset "Modulo" is codenamed "advantage" in our programs). To run ablation studies with Bayesnet disabled, change 5th parameter of "Train_ADC_All_Histograms_experimental_ver3.py" to "False", then run the aforementioned programs in exactly the same sequence, using exactly the same parameter settings. Doing so will not produce different results on the datasets forest, higgs, and advantage, due to no functional dependency being detected in the first place.
 
